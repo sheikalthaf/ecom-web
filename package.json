@@ -23,7 +23,7 @@
     "@angular/router": "^18.1.4",
     "@angular/service-worker": "^18.1.4",
     "@angular/ssr": "^18.1.4",
-    "@meeui/ui": "0.1.0-next.0",
+    "@meeui/ui": "0.1.3",
     "@ng-icons/core": "^25.1.0",
     "@ng-icons/lucide": "^26.3.0",
     "@ngrx/operators": "^18.0.2",

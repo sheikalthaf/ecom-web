@@ -8,7 +8,7 @@ import { AddCategoryComponent } from './add-category.component';
 import { AppState } from '../../store/product.store';
 import {
   Button,
-  Icons,
+  Icon,
   Table,
   Row,
   Head,
@@ -37,7 +37,7 @@ export const TableComponents = [
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, TableComponents, Icons, Button, AddCategoryComponent],
+  imports: [AsyncPipe, TableComponents, Icon, Button, AddCategoryComponent],
   providers: [provideIcons({ lucideTrash2, lucidePencil })],
   selector: 'az-category-list',
   template: `

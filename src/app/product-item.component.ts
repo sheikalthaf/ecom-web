@@ -4,7 +4,6 @@ import {
   computed,
   inject,
   input,
-  OnInit,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Product } from './models/product';
@@ -28,7 +27,7 @@ import { AddToCardComponent } from './add-to-card.component';
     <a
       [routerLink]="product().Id"
       routerLinkActive="router-link-active"
-      class="rounded-md overflow-hidden"
+      class="overflow-hidden"
     >
       <img class="max-h-56 mx-auto" [src]="product().Image[0] | image: true" />
       <div class="p-2">
@@ -41,7 +40,7 @@ import { AddToCardComponent } from './add-to-card.component';
     </a>
   `,
   host: {
-    class: 'block border',
+    class: 'block border rounded-base',
   },
 })
 export class ProductItemComponent {

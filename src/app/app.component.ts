@@ -5,8 +5,8 @@ import { HeaderComponent } from './header.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `<az-header></az-header>
+    <router-outlet></router-outlet> `,
   imports: [RouterOutlet, HeaderComponent],
 })
 export class AppComponent {
