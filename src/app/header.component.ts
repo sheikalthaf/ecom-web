@@ -1,32 +1,72 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
-import { Button, Icons, Menu, MenuTrigger } from '@meeui/ui';
+import { Component, computed, inject } from '@angular/core';
+import {
+  Button,
+  DialogClose,
+  Icon,
+  Input,
+  Label,
+  Menu,
+  popoverPortal,
+  PopoverTrigger,
+} from '@meeui/ui';
 import { provideIcons } from '@ng-icons/core';
 import { lucideShoppingCart } from '@ng-icons/lucide';
 import { CartService } from './cart.service';
 import { AppState } from './store/product.store';
 import { ImagePipe } from './admin/image.pipe';
 import { RouterLink } from '@angular/router';
+import { UserState } from './store/user.store';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { LoginComponent } from './login.component';
 
 @Component({
   standalone: true,
-  imports: [Icons, Button, Menu, MenuTrigger, ImagePipe, RouterLink],
+  imports: [
+    Icon,
+    Button,
+    Menu,
+    PopoverTrigger,
+    ImagePipe,
+    RouterLink,
+    DialogClose,
+    Input,
+    Label,
+    ReactiveFormsModule,
+  ],
   viewProviders: [provideIcons({ lucideShoppingCart })],
   selector: 'az-header',
   template: `
     <!-- <img src="assets/logo.svg" alt="Ecom Logo" class="h-full mx-auto" /> -->
     <a class="font-semibold text-base" routerLink="/">Angular store</a>
 
-    <button
-      meeButton
-      variant="icon"
-      class="ml-auto"
-      [meeMenuTrigger]="cartMenu"
-    >
-      <mee-icon name="lucideShoppingCart" class="mr-2" />
-      {{ addToCart.cartCount() }}
-    </button>
+    @if (user()) {
+      <button
+        meeButton
+        variant="icon"
+        class="ml-auto"
+        [meePopoverTrigger]="cartMenu"
+        [options]="{ position: 'br' }"
+      >
+        <mee-icon name="lucideShoppingCart" class="mr-2" />
+        {{ addToCart.cartCount() }}
+      </button>
+    } @else {
+      <button
+        meeButton
+        variant="primary"
+        class="ml-auto"
+        (click)="login($event)"
+      >
+        Login
+      </button>
+    }
 
-    <mee-menu #cartMenu>
+    <ng-template #cartMenu>
       <div class="flex flex-col w-72 p-b gap-b2">
         @for (item of items(); track item) {
           <div class="flex">
@@ -47,6 +87,7 @@ import { RouterLink } from '@angular/router';
             meeButton
             variant="primary"
             class="w-full"
+            meeDialogClose
             (click)="addToCart.clearCart()"
           >
             Clear Cart
@@ -56,21 +97,28 @@ import { RouterLink } from '@angular/router';
             variant="primary"
             class="w-full"
             routerLink="/checkout"
+            meeDialogClose
           >
             Checkout
           </button>
         </div>
       </div>
-    </mee-menu>
+    </ng-template>
   `,
   host: {
     class:
-      'border-b h-[50px] flex items-center fixed top-0 left-0 w-full backdrop-blur-3xl bg-foreground bg-opacity-50 px-b4',
+      'border-b h-[50px] flex items-center sticky top-0 w-full backdrop-blur-3xl bg-foreground bg-opacity-50 px-b4',
   },
 })
 export class HeaderComponent {
   addToCart = inject(CartService);
+  readonly popover = popoverPortal();
   private productStore = inject(AppState);
+  private userStore = inject(UserState);
+  readonly form = new FormGroup({
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
 
   items = computed(() => {
     const products = this.productStore.products();
@@ -79,4 +127,23 @@ export class HeaderComponent {
       return { ...product, qty: item.qty };
     });
   });
+
+  user = computed(() => this.userStore.user());
+
+  login(event: Event) {
+    this.popover.open(
+      LoginComponent,
+      {
+        target: event.target as HTMLElement,
+        position: 'br',
+      },
+      {
+        width: '400px',
+      },
+    );
+  }
+
+  register() {
+    this.form.reset();
+  }
 }

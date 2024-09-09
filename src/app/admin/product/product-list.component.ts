@@ -5,7 +5,7 @@ import { AsyncPipe } from '@angular/common';
 import { provideIcons } from '@ng-icons/core';
 import { lucideTrash2, lucidePencil } from '@ng-icons/lucide';
 import { Product } from '../../models/product';
-import { Button, Card, dialogPortal, Icons } from '@meeui/ui';
+import { Button, Card, dialogPortal, Icon } from '@meeui/ui';
 import { TableComponents } from '../category/category-list.component';
 import { computedAsync } from 'ngxtension/computed-async';
 import { firstValueFrom } from 'rxjs';
@@ -15,7 +15,7 @@ import { firstValueFrom } from 'rxjs';
   imports: [
     AsyncPipe,
     TableComponents,
-    Icons,
+    Icon,
     Button,
     AddProductComponent,
     Card,

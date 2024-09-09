@@ -11,12 +11,12 @@ import { Product } from './models/product';
 import { ImagePipe } from './admin/image.pipe';
 import { provideIcons } from '@ng-icons/core';
 import { lucideTrash2 } from '@ng-icons/lucide';
-import { Button, Icons } from '@meeui/ui';
+import { Button, Icon } from '@meeui/ui';
 
 @Component({
   standalone: true,
   selector: 'app-checkout',
-  imports: [TableComponents, ImagePipe, Icons, Button],
+  imports: [TableComponents, ImagePipe, Icon, Button],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [provideIcons({ lucideTrash2 })],
   template: `

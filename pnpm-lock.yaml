@@ -45,8 +45,8 @@ importers:
         specifier: ^18.1.4
         version: 18.1.4(@angular/common@18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))
       '@meeui/ui':
-        specifier: 0.1.0-next.0
-        version: 0.1.0-next.0(@angular/common@18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))
+        specifier: 0.1.3
+        version: 0.1.3(@angular/common@18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))
       '@ng-icons/core':
         specifier: ^25.1.0
         version: 25.6.1
@@ -1326,8 +1326,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@meeui/ui@0.1.0-next.0':
-    resolution: {integrity: sha512-Ciz7syGJ2UJ1qbPpk4/u6E4c7yvQzvA4iOFQ5cDLd+O1tAm26M8r1nfgvxYBowKlGOJ+lYPAHfe8lsgnBFHu7Q==}
+  '@meeui/ui@0.1.3':
+    resolution: {integrity: sha512-Xg5vSdW5YAcp5fvPiFsCVMd7Aj3Qvvoe4nWm6f0w8QtmxbrLl0xhjvNDot3blrfaNSPmueMkNskatY3ceyzj2A==}
     peerDependencies:
       '@angular/common': ^18.0.0
       '@angular/core': ^18.0.0
@@ -6364,11 +6364,11 @@ snapshots:
   '@lmdb/lmdb-win32-x64@3.0.12':
     optional: true
 
-  '@meeui/ui@0.1.0-next.0(@angular/common@18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))':
+  '@meeui/ui@0.1.3(@angular/common@18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1))(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))':
     dependencies:
       '@angular/common': 18.1.4(@angular/core@18.1.4(rxjs@7.8.1)(zone.js@0.14.4))(rxjs@7.8.1)
       '@angular/core': 18.1.4(rxjs@7.8.1)(zone.js@0.14.4)
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3':
     optional: true
