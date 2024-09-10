@@ -29,7 +29,10 @@ import { AddToCardComponent } from './add-to-card.component';
       routerLinkActive="router-link-active"
       class="overflow-hidden"
     >
-      <img class="max-h-56 mx-auto" [src]="product().Image[0] | image: true" />
+      <img
+        class="max-h-56 mx-auto"
+        [src]="product().Thumbnail[0] | image: true"
+      />
       <div class="p-2">
         <h4 class="text-title font-bold">Product {{ product().Name }}</h4>
         <p class="text-text text-sm">Size: {{ product().Size }}</p>

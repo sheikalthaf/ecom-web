@@ -8,8 +8,9 @@ import { environment } from '../../environments/environment.development';
 export class ImagePipe implements PipeTransform {
   transform(value?: string, ...args: any[]): any {
     const isThumbnail = args[0] || false;
-    if (!value) return value;
-    return imageFn(value, isThumbnail);
+    return value;
+    // if (!value) return value;
+    // return imageFn(value, isThumbnail);
   }
 }
 

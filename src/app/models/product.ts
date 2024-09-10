@@ -10,4 +10,5 @@ export interface Product {
   Quantity: number;
   IsDeleted: boolean;
   Image: string[];
+  Thumbnail: string[];
 }
