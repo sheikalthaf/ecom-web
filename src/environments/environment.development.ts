@@ -1,4 +1,4 @@
 export const environment = {
-  api: 'http://localhost:8101',
+  api: 'http://ecomserver-3.ap-south-1.elasticbeanstalk.com',
   production: false,
 };

@@ -13,6 +13,7 @@ import {
 import { UserService } from './user.service';
 import { JwtService } from './jwt.service';
 import { User } from './models/user';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -33,6 +34,9 @@ import { User } from './models/user';
     </mee-selectable>
 
     @if (activeTab() === 'login') {
+      @if (invalidCredentials()) {
+        <div class="text-red-500">Invalid credentials</div>
+      }
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <label meeLabel>
           Username
@@ -40,7 +44,7 @@ import { User } from './models/user';
         </label>
         <label meeLabel>
           Password
-          <input meeInput formControlName="password" />
+          <input meeInput type="password" formControlName="password" />
         </label>
 
         <button
@@ -71,7 +75,7 @@ import { User } from './models/user';
         </label>
         <label meeLabel>
           Password
-          <input meeInput formControlName="password" />
+          <input meeInput type="password" formControlName="password" />
         </label>
         <button
           meeButton
@@ -110,6 +114,7 @@ export class LoginComponent {
   private userService = inject(UserService);
 
   loading = signal(false);
+  invalidCredentials = signal(false);
 
   login() {
     const { username, password } = this.loginForm.value;
@@ -127,7 +132,10 @@ export class LoginComponent {
         this.loading.set(false);
         this.dialogRef.close();
       },
-      error: () => {
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.invalidCredentials.set(true);
+        }
         this.loading.set(false);
       },
     });
